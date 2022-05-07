@@ -7,7 +7,7 @@ import scipy
 import sklearn
 from scipy.stats import pearsonr, spearmanr
 
-from sklearn.metrics import matthews_corrcoef, f1_score
+from sklearn.metrics import matthews_corrcoef
 from data.preprocess_data import * 
 import csv
 from pathlib import Path  

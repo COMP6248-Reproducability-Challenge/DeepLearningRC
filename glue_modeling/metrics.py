@@ -54,15 +54,14 @@ def compute_metrics(task_name, preds, labels):
         return {"acc": simple_accuracy(preds, labels)}
     elif task_name == "rte":
         return {"acc": simple_accuracy(preds, labels)}
-    elif task_name == "squadv1"or "squadv2":
-        return {"f1": NotImplemented(), "em":NotImplemented() }
+
     else:
         raise KeyError(task_name)
 
 def simple_accuracy(preds, labels):
     return (preds == labels).mean()
 
-def convert_tsv_file(preds,task_name, kernel_size):
+def convert_tsv_file(preds,task_name, kernel_size, data_type):
     '''To generate .tsv files of the test prediction for submission to GLUE'''
     data_dict = preprocess_data(task_name, data_type='test')
     new_dict = {}

@@ -32,7 +32,7 @@ def run_glue_experiments(model_size,task_name,experiment_type,longerthan4M,kerne
 
 
   if experiment_type == 'dev-pred': #dev-pred for experiment with predictions on the dev data to get the glue scores on dev sets
-    all_tasks =["cola","mnli","mrpc","sst-2","sts-b","qqp", "qnli","rte"]
+    all_tasks =["cola","mnli-mm","mrpc","sst-2","sts-b","qqp", "qnli","rte"]
     glue_score = []
     for task_name in all_tasks: 
       pred, labels = train_pred_ft(task_name = task_name , model_size = ms, num_epoch = 3, seed_val = 42, batch_size = 32,random_sampling = False, kernel_size = kernel_size)

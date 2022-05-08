@@ -1010,13 +1010,23 @@ def main():
     )
 
     parser.add_argument(
-        "--task-name",
+        "--task_name",
         default=None,
         type=str,
         help="squadv1 or squadv2"
     )
+    
+    
+ 
 
      # Other parameters
+    
+    parser.add_argument(
+        "--train_longer",
+        default=False,
+        type=bool,
+        help="train longer than 4M"
+    )
 
     parser.add_argument(
         "--model_type",
@@ -1209,6 +1219,9 @@ def main():
     args.do_lower_case = True 
     args.do_train = True
     args.do_eval = True
+    if args.train_longer == True:
+        args.num_train_epochs = 5
+     
 
 
     if args.task_name == 'squadv2':

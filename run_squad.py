@@ -68,7 +68,7 @@ model_sizes = {'small':'YituTech/conv-bert-small',
 
 
 
-task_data_path = { "squadv1":  {"train":"data/SQuAD/train-v1.0.json",'dev':'"data/SQuAD/dev-v1.0.json' },
+task_data_path = { "squadv1":  {"train":"data/SQuAD/train-v1.1.json",'dev':'"data/SQuAD/dev-v1.1.json' },
     "squadv2":  {"train":"data/SQuAD/train-v2.0.json",'dev':'"data/SQuAD/dev-v2.0.json' }}
 
 

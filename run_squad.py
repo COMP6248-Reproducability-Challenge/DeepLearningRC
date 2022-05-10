@@ -36,12 +36,15 @@ from transformers import (
     MODEL_FOR_QUESTION_ANSWERING_MAPPING,
     WEIGHTS_NAME,
     AdamW,
+    ConvBertTokenizer,
     ConvBertConfig,
     ConvBertForQuestionAnswering,
-    ConvBertTokenizer,
+  
     get_linear_schedule_with_warmup,
     squad_convert_examples_to_features,
 )
+
+
 from transformers.data.metrics.squad_metrics import (
     compute_predictions_log_probs,
     compute_predictions_logits,
@@ -504,16 +507,9 @@ def main():
 
     parser.add_argument(
         "--task_name",
-        default=None,
+        default="squadv1",
         type=str,
         help="squadv1 or squadv2"
-    )
-
-    parser.add_argument(
-        "--train_longer", 
-        default=False,
-        type=bool,
-        help="train longer for 4M"
     )
 
      # Other parameters
@@ -678,7 +674,7 @@ def main():
     )
     parser.add_argument("--no_cuda", action="store_true", help="Whether not to use CUDA when available")
     parser.add_argument(
-        "--overwrite_output_dir", action="store_true", help="Overwrite the content of the output directory"
+        "--overwrite_output_dir", default = True, action="store_true", help="Overwrite the content of the output directory"
     )
     parser.add_argument(
         "--overwrite_cache", action="store_true", help="Overwrite the cached training and evaluation sets"
@@ -709,8 +705,7 @@ def main():
     args.do_lower_case = True 
     args.do_train = True
     args.do_eval = True
-    if args.train_longer == True:
-        args.num_train_epochs = 5.0
+
 
     if args.task_name == 'squadv2':
         args.version_2_with_negative = True

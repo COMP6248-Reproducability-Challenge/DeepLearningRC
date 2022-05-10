@@ -44,7 +44,7 @@ def tokenization(task_name,model_size,data_type, random_sampling = False):
             
             labels = torch.tensor(data_dict['labels'], dtype = torch.float32)
         else:
-            labels = torch.tensor(data_dict['labels'])
+            labels = torch.tensor(data_dict['labels'],dtype = torch.long)
         return input_ids, attention_masks, token_type_ids, labels
 
 

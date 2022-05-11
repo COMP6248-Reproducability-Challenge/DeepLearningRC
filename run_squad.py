@@ -511,6 +511,13 @@ def main():
         type=str,
         help="squadv1 or squadv2"
     )
+    
+    parser.add_argument(
+        "--train_longer", 
+        default=False,
+        type=bool,
+        help="train longer for 4M"
+    )
 
      # Other parameters
 
@@ -705,7 +712,9 @@ def main():
     args.do_lower_case = True 
     args.do_train = True
     args.do_eval = True
-
+    
+    if args.train_longer == True:
+        args.num_train_epochs = 5.0
 
     if args.task_name == 'squadv2':
         args.version_2_with_negative = True
